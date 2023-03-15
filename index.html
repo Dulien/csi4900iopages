@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login Page</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #F8F8FF;
+		  }
+		  
+		  .container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		  }
+		  
+		  form {
+			width: 400px;
+			padding: 40px;
+			background-color: #FFFFFF;
+			border-radius: 10px;
+			box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+		  }
+		  
+		  h1 {
+			text-align: center;
+			margin-bottom: 30px;
+		  }
+		  
+		  input[type=text], input[type=password] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		  }
+		  
+		  button[type=submit], button[type=button] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			width: 100%;
+		  }
+		  
+		  button[type=submit]:hover, button[type=button]:hover {
+			background-color: #45a049;
+		  }
+		  
+		  @media screen and (max-width: 480px) {
+			form {
+			  width: 80%;
+			}
+		  }
+		  
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<form method="POST" action="/Back-end/login.php" >
+			<h1>Login</h1>
+			<label for="name"><b>Name</b></label>
+			<input type="text" placeholder="Enter Name" name="name" required>
+			<button type="submit">Login</button>
+			<button type="button" onclick="location.href='pages/information.html'">Register</button>
+		</form>
+	</div>
+</body>
+
+</html>
