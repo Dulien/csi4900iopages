@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Information</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+		form {
+			margin: 20px auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+			border-radius: 5px;
+			width: 400px;
+		}
+		label {
+			display: inline-block;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+		input[type="text"], select {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			margin-bottom: 20px;
+			box-sizing: border-box;
+		}
+		input[type="radio"] {
+			display: inline-block;
+			margin-right: 10px;
+		}
+		input[type="submit"] {
+			background-color: darkred;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		input[type="submit"]:hover {
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<form method="POST" action="../Back-end/save_info.php">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" required>
+
+		<label for="confidence">Confidence going into the test (1-10):</label>
+		<select id="confidence" name="confidence" required>
+			<option value="" selected disabled>Select your confidence level</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+		</select>
+
+		<label for="tech-field">Are you in a tech related field?</label>
+		<div>
+			<input type="radio" id="yes" name="tech-field" value="TRUE" required>
+			<label for="TRUE">Yes</label>
+		</div>
+		<div>
+			<input type="radio" id="no" name="tech-field" value="FALSE">
+			<label for="FALSE">No</label>
+		</div>
+
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>

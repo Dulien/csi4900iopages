@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Feedback</title>
+    <style>
+        body {
+            background-color: #F7F7F7;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 50px auto;
+            text-align: center;
+            width: 80%;
+        }
+
+        h1 {
+            color: #333333;
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        textarea {
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+            font-size: 16px;
+            padding: 10px;
+            width: 100%;
+        }
+
+        #submit {
+            background-color: darkred;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 24px;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Feedback</h1>
+        <label for="rush">Did you rush through the quiz?</label>
+        <input type="text" id="rush" name="rush" placeholder="Enter your answer here...">
+
+        <label for="comments">Do you have any comments or suggestions?</label>
+        <textarea id="comments" name="comments" placeholder="Enter your answer here..."></textarea>
+
+        <button id="submit" onclick="submit()">Submit</button>
+    </div>
+    <script>
+
+        function downloadCSV(array) {
+            const csv = array.map(row => row.join(",")).join("\n");
+            const blob = new Blob([csv], { type: "text/csv" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "results.csv";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function submit() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const encodedParam = urlParams.get('data');
+            const decodedParam = decodeURIComponent(encodedParam);
+            const finalAnswerCSV = JSON.parse(decodedParam);
+            console.log(finalAnswerCSV)
+            var comments = []
+            comments.push(document.getElementById("rush").value)
+            comments.push(document.getElementById("comments").value)
+            finalAnswerCSV.push(comments)
+            downloadCSV(finalAnswerCSV);
+        }
+
+
+    </script>
+</body>
+
+</html>

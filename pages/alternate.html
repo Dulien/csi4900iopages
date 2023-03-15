@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Highlighting Example</title>
+    <style> 
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            max-width: 800px;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #left {
+            flex: 2;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #left h1 {
+            font-size: 36px;
+            color: #333;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        #left p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        #left a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        #left a:hover {
+            text-decoration: underline;
+        }
+
+        #right {
+            flex: 1;
+            background-color: #f5f5f5;
+            padding: 20px;
+            margin-left: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #right h2 {
+            font-size: 24px;
+            color: #333;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        #right ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #right li {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 5px;
+            padding-left: 10px;
+            background-size: 20px 20px;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0066cc;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #004c99;
+        }
+
+        .highlight {
+            background-color: yellow;
+        }
+        
+        .highlighted-item {
+            background-color: lightgreen;
+        }
+
+        #slow-fade {
+            opacity: 1;
+            transition: 1s opacity;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="left">
+            <h1>Phishing Email Example</h1>
+            <p class="slow-fade">From: PayPal &lt;noreply@paypall.com&gt;</p>
+            <p class="slow-fade">Subject: Your account is at risk of being limited</p>
+            <p class="slow-fade">Dear PayPal user,</p>
+            <p class="slow-fade">We have noticed some suspicious activity on your PayPal account. In order to protect your account, we
+                require you to confirm your account information. Failure to do so may result in your account being
+                limited or even suspended.</p>
+            <p>Please click the following link to confirm your account information:</p>
+            <p><a
+                    href="http://www.paypal.com-confirm-verification-accounts.secure-id52038.net/login">http://www.paypal.com-confirm-verification-accounts.secure-id52038.net/login</a>
+            </p>
+            <p class="slow-fade">Note that failure to confirm your account information within 24 hours may result in the suspension of
+                your PayPal account.</p>
+            <p class="slow-fade">Thank you for using PayPal.</p>
+            <p class="slow-fade">Best regards,<br>PayPal Security Department</p>
+        </div>
+        <div id="right">
+            <h2>Phishing Attributes</h2>
+            <ul>
+                <li class="related-item">General Language</li>
+                <li class="related-item">Spoofed Email Sender</li>
+                <li class="related-item">Subject Line Keywords</li>
+                <li class="related-item">Wrong Redirect</li>
+                <li class="related-item">Not a phishing mail</li>
+            </ul>
+        </div>
+    </div>
+    <button id="clear-highlights">Clear Highlights</button>
+    <script>
+        
+        const leftDiv = document.getElementById('left');
+        const rightList = document.querySelectorAll('#right li');
+        let highlights = [];
+        
+        leftDiv.addEventListener('mouseup', function () {
+            const selectedText = window.getSelection().toString();
+            if (selectedText.length > 0) {
+                const highlight = document.createElement('span');
+                highlight.style.backgroundColor = 'yellow';
+                const range = window.getSelection().getRangeAt(0);
+                range.surroundContents(highlight);
+                highlights.push(highlight);
+            }
+        });
+        
+        const clearButton = document.getElementById('clear-highlights');
+        clearButton.addEventListener('click', function () {
+            highlights.forEach(function (highlight) {
+                highlight.outerHTML = highlight.innerHTML;
+            });
+            highlights = [];
+        });
+        
+        rightList.forEach(function (listItem) {
+            listItem.addEventListener('click', function () {
+                if (highlights.length > 0) {
+                    const highlightedText = highlights.map(function (highlight) {
+                        return highlight.textContent;
+                    }).join(' ');
+                    listItem.textContent += ` (${highlightedText})`;
+                    highlights.forEach(function (highlight) {
+                        highlight.style.backgroundColor = 'transparent';
+                    });
+                    highlights = [];
+                }
+            });
+        });
+    </script>
+</body>
+</html>

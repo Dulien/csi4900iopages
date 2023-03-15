@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test 1</title>
+    
+    <link rel="stylesheet" href="test1_style.css">
+</head>
+
+
+<body>
+    <h1>CSI4900 Phishing Quiz</h1>
+
+    <!-- Create a container to hold the embedded files -->
+    <div id="email-container"></div>
+
+    <!-- Create radio button for phishing/non-phishing -->
+    <label for="phishing-radio">
+        <input type="radio" id="phishing-radio" name="phishing" value="phishing">
+        <span>Phishing</span>
+    </label>
+    <label for="non-phishing">
+        <input type="radio" id="non-phishing" name="phishing" value="non-phishing">
+        <span>Non-Phishing</span>
+    </label>
+
+    <!-- Create a button to switch between emails -->
+    <button id="next-email" onclick="nextEmail()">Next Email</button>
+
+    <script src="test1_script.js"></script>
+</body>
+
+</html>

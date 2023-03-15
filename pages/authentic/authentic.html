@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Phishing Email Identification Quiz</title>
+    <link rel="stylesheet" href="authentic_style.css">
+</head>
+
+<body>
+    <h2 style="text-align: center;">Learning Quiz</h2>
+    <div style="display:flex">
+        <div id="email-container" style="width: 65vw; height:750px; margin-right: 20px;">
+        </div>
+        <div style="width:35%; height:500px;">
+            <h2>Select the attributes present in the phishing email:</h2>
+            <form id="quiz-form">
+                <input type="checkbox" name="general-language" id="general-language" value="true"> <label
+                    for="general-language">General Language</label><br>
+                <input type="checkbox" name="spelling-grammatical-errors" id="spelling-grammatical-errors" value="true">
+                <label for="spelling-grammatical-errors">Spelling/Grammatical Errors</label><br>
+                <input type="checkbox" name="spoofed-email-sender" id="spoofed-email-sender" value="true"> <label
+                    for="spoofed-email-sender">Spoofed Email Sender</label><br>
+                <input type="checkbox" name="urgent-language" id="urgent-language" value="true"> <label
+                    for="urgent-language">Urgent Language</label><br>
+                <input type="checkbox" name="spoofed-url" id="spoofed-url" value="true"> <label
+                    for="spoofed-url">Spoofed URL</label><br>
+                <input type="checkbox" name="wrong-redirect" id="wrong-redirect" value="true"> <label
+                    for="wrong-redirect">Wrong Redirect</label><br>
+                <br>
+                <button type="submit">Check Answers</button>
+            </form>
+            <br>
+            <button style="visibility: hidden;" id="next-email" onclick="nextEmail()">Next Question</button>
+            <div id="result"></div>
+        </div>
+    </div>
+    <script src="authentic_script.js"></script>
+</body>
+
+</html>
