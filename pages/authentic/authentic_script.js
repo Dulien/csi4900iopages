@@ -1,6 +1,4 @@
-var answers = [];
-var answersCSV = [];
-var finalAnswerCSV = [];
+
 
 function nextEmail() {
     toggleButton();
@@ -83,12 +81,18 @@ document.getElementById("quiz-form").addEventListener("submit", function (event)
     }
 });
 
+
+
 let answersDict = ["general-language", "spelling-grammatical-errors", "spoofed-email-sender", "urgent-language", "spoofed-url", "wrong-redirect"];
 let correctAnswers1 = ["spelling-grammatical-errors", "urgent-language", "wrong-redirect"]; // email_93
 let correctAnswers2 = ["general-language"]; // email_94
 let correctAnswers3 = ["general-language", "spoofed-email-sender"]; // email_96
 let correctAnswers4 = ["spelling-grammatical-errors", "spoofed-email-sender"]; // email_133
 let correctAnswers5 = ["spoofed-email-sender", "wrong-redirect"]; // email_137
+
+var answers = [];
+var answersCSV = [];
+var finalAnswerCSV = [];
 
 
 // iframe
@@ -101,3 +105,21 @@ container.appendChild(iframe);
 
 var questionStart = Date.now();
 var testStart = Date.now();
+
+const labels = document.querySelectorAll('label');
+let hoverStart;
+
+// Add event listeners to each label element
+labels.forEach(label => {
+  label.addEventListener('mouseenter', () => {
+    hoverStart = new Date();
+  });
+
+  label.addEventListener('mouseleave', () => {
+    const hoverEnd = new Date();
+    const hoverTime = (hoverEnd - hoverStart)/1000;
+
+    console.log(`User spent ${hoverTime} seconds hovering over ${label.textContent}`);
+    // Here, you can save the hover time to a database or do something else with it
+  });
+});
