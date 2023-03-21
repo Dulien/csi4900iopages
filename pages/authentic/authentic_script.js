@@ -4,7 +4,10 @@ function nextEmail() {
     toggleButton();
     var timeSpent = Date.now() - questionStart;
     answers.push(currentEmail + " Time: " + timeSpent / 1000 + " seconds");
-    answersCSV.push(timeSpent/1000)
+    answersCSV.push(timeSpent/1000);
+    answersCSV.push(hoverQuestion);
+    totalHover += hoverQuestion;
+    hoverQuestion = 0;
 
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
     for (var i = 0; i < checkboxes.length; i++) {
@@ -16,8 +19,9 @@ function nextEmail() {
     if (currentEmail == 5) {
         testTimeSpent = Date.now() - testStart;
         answersCSV.push(testTimeSpent/1000);
-        finalAnswerCSV.push(["Q1T","Q2T","Q3T","Q4T","Q5T","TotalT"])
-        finalAnswerCSV.push(answersCSV)
+        answersCSV.push(totalHover);
+        finalAnswerCSV.push(["Q1T","Q1H","Q2T","Q2H","Q3T","Q3H","Q4T","Q4H","Q5T","Q5H","TotalT","TotalH"]);
+        finalAnswerCSV.push(answersCSV);
         const jsonString = JSON.stringify(finalAnswerCSV);
         const encodedParam = encodeURIComponent(jsonString);
         answers.push("Quiz Complete. Total time spent: " + testTimeSpent / 1000 + " seconds");
@@ -71,7 +75,11 @@ document.getElementById("quiz-form").addEventListener("submit", function (event)
     } else if (currentEmail === 5) {
         isCorrect = correctAnswers5.every(answer => selectedAnswers.includes(answer));
         incorrectAnswers = correctAnswers5.filter(answer => !selectedAnswers.includes(answer));
-    } 
+    }
+
+    for (var i = 0; i < incorrectAnswers.length; i++) {
+        incorrectAnswers[i] = answersDict[incorrectAnswers[i]];
+    }
     
     if (!isCorrect) {
         document.getElementById("result").innerHTML = `You got the following answers wrong: ${incorrectAnswers.join(', ')}.`;
@@ -82,8 +90,8 @@ document.getElementById("quiz-form").addEventListener("submit", function (event)
 });
 
 
-
-let answersDict = ["general-language", "spelling-grammatical-errors", "spoofed-email-sender", "urgent-language", "spoofed-url", "wrong-redirect"];
+let answersDict = {"general-language":"General Language", "spelling-grammatical-errors":"Spelling/Grammatical Errors",
+ "spoofed-email-sender":"Spoofed Email Sender", "urgent-language":"Urgent Language", "wrong-redirect":"Wrong Redirect"};
 let correctAnswers1 = ["spelling-grammatical-errors", "urgent-language", "wrong-redirect"]; // email_93
 let correctAnswers2 = ["general-language"]; // email_94
 let correctAnswers3 = ["general-language", "spoofed-email-sender"]; // email_96
@@ -93,6 +101,7 @@ let correctAnswers5 = ["spoofed-email-sender", "wrong-redirect"]; // email_137
 var answers = [];
 var answersCSV = [];
 var finalAnswerCSV = [];
+var hoverTimes = []
 
 
 // iframe
@@ -105,11 +114,11 @@ container.appendChild(iframe);
 
 var questionStart = Date.now();
 var testStart = Date.now();
+var hoverStart = 0;
+var hoverQuestion = 0;
+var totalHover = 0;
 
 const labels = document.querySelectorAll('label');
-let hoverStart;
-
-// Add event listeners to each label element
 labels.forEach(label => {
   label.addEventListener('mouseenter', () => {
     hoverStart = new Date();
@@ -118,8 +127,7 @@ labels.forEach(label => {
   label.addEventListener('mouseleave', () => {
     const hoverEnd = new Date();
     const hoverTime = (hoverEnd - hoverStart)/1000;
-
-    console.log(`User spent ${hoverTime} seconds hovering over ${label.textContent}`);
-    // Here, you can save the hover time to a database or do something else with it
+    hoverQuestion += hoverTime;
+    console.log(hoverTime)
   });
 });
