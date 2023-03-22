@@ -1,11 +1,3 @@
-// Add dragstart event listeners to the draggable attributes
-function addDragstartListeners() {
-    const draggables = document.querySelectorAll(".draggable");
-    for (const draggable of draggables) {
-        draggable.addEventListener("dragstart", drag);
-    }
-}
-
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
@@ -28,15 +20,13 @@ function drop(ev) {
         checkCompletion();
         // Highlight the correct email portion in green
         ev.target.style.backgroundColor = "lime";
+        ev.target.style.padding = "3px";
 
         // Disable the draggable attribute
         var draggable = document.getElementById(data);
         draggable.setAttribute("draggable", "false");
         draggable.style.opacity = "0.5";
         draggable.style.cursor = "not-allowed";
-
-        // Check if all attributes have been placed
-        
     }
 }
 
@@ -52,11 +42,15 @@ function checkCompletion() {
     }
 
     if (completed) {
-        toggleButton();
+        var button = document.getElementById("next-email");
+        button.style.visibility = "visible";
     }
 }
 
 function loadEmailContent(emailNumber) {
+    var button = document.getElementById("next-email");
+    button.style.visibility = "hidden";
+
     var container = document.getElementById("email-container");
     container.innerHTML = "";
 
@@ -86,8 +80,6 @@ function nextEmail() {
         currentEmail = 1;
     }
     loadEmailContent(currentEmail);
-
-    // Reset the draggable attributes
     resetDraggableAttributes();
 }
 
@@ -114,6 +106,13 @@ function addTargetListeners() {
     for (const target of targets) {
         target.addEventListener("drop", drop);
         target.addEventListener("dragover", allowDrop);
+    }
+}
+
+function addDragstartListeners() {
+    const draggables = document.querySelectorAll(".draggable");
+    for (const draggable of draggables) {
+        draggable.addEventListener("dragstart", drag);
     }
 }
 
