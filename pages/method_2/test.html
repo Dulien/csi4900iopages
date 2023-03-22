@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing Email Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #attributes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .attribute {
+      background-color: lightblue;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: grab;
+    }
+    .matched {
+      background-color: limegreen;
+      cursor: auto;
+    }
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: 1px solid black;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Phishing Email Quiz</h1>
+  <p>Drag and match the attributes with the corresponding text in the phishing email below:</p>
+  <div id="attributes">
+    <div class="attribute" draggable="true" id="spoofed-email-sender">Spoofed email sender</div>
+  </div>
+  <iframe id="email-frame" srcdoc="<p><span id='fake-email'>From: example@bank.com</span><br>Dear user, please reset your password immediately.</p>"></iframe>
+  <script>
+    const attribute = document.getElementById('spoofed-email-sender');
+    const emailFrame = document.getElementById('email-frame');
+    const emailWindow = emailFrame.contentWindow;
+
+    attribute.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', e.target.id);
+    });
+
+    emailWindow.addEventListener('dragover', (e) => {
+      e.preventDefault();
+    });
+
+    emailWindow.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const attributeId = e.dataTransfer.getData('text/plain');
+      const target = emailWindow.document.getElementById('fake-email');
+
+      if (e.target === target) {
+        const attributeElement = document.getElementById(attributeId);
+        attributeElement.classList.add('matched');
+        attributeElement.setAttribute('draggable', 'false');
+        const matchedText = document.createElement('span');
+        matchedText.textContent = attributeElement.textContent;
+        matchedText.style.backgroundColor = 'limegreen';
+        target.parentNode.insertBefore(matchedText, target);
+        target.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
