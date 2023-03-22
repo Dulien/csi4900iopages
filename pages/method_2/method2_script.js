@@ -25,6 +25,7 @@ function drop(ev) {
     
     // Check if the dragged attribute matches the correct email portion
     if (data === targetId.replace("-target", "")) {
+        checkCompletion();
         // Highlight the correct email portion in green
         ev.target.style.backgroundColor = "lime";
 
@@ -35,7 +36,7 @@ function drop(ev) {
         draggable.style.cursor = "not-allowed";
 
         // Check if all attributes have been placed
-        checkCompletion();
+        
     }
 }
 
@@ -49,6 +50,7 @@ function checkCompletion() {
             break;
         }
     }
+
     if (completed) {
         toggleButton();
     }
