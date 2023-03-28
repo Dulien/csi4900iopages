@@ -7,10 +7,6 @@ h1 {
     text-align: center;
     margin-top: 50px;
 }
-h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
 #result {
     font-size: 20px;
     margin-top: 20px;
@@ -23,7 +19,6 @@ h2 {
 .draggable {
     cursor: move;
     text-align: center;
-
     margin-top: 10px;
     padding: 5px;
     background-color: lightblue;
@@ -33,4 +28,54 @@ h2 {
 }
 .target {
     pointer-events: none;
+}
+.header-container {
+    display: flex;
+    align-items: center;
+}
+
+h2 {
+    margin-right: 10px;
+}
+
+
+
+.all-attribute {
+    display: inline-block;
+    position: relative;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.description {
+    visibility: hidden;
+    position: absolute;
+    z-index: 2;
+    width: 275px;
+    color: white;
+    font-size: 16px;
+    background-color: black;
+    border-radius: 10px;
+    padding: 10px 15px 10px 15px;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.description::before {
+    content: "";
+    position: absolute;
+    transform: rotate(45deg);
+    background-color: black;
+    padding: 5px;
+    z-index: 1;
+    bottom: -10px;
+    left: calc(50% - 5px);
+}
+
+.all-attribute:hover .description {
+    visibility: visible;
 }

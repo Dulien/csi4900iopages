@@ -9,7 +9,7 @@
 <body>
     <h2 style="text-align: center;">Learning Quiz</h2>
     <div style="display:flex">
-        <div id="email-container" style="width: 65vw; height:750px; margin-right: 20px; position: relative; overflow: auto;">
+        <div id="email-container" style="width: 65vw; height:600px; margin-right: 20px; position: relative; overflow: auto;">
         </div>
         <div style="width:35%; height:500px;">
             <h2>Drag the attributes to the phishing email:</h2>
@@ -20,6 +20,10 @@
             <button style="visibility: hidden;" id="next-email" onclick="nextEmail()">Next Question</button>
             <div id="result"></div>
         </div>
+    </div>
+    <div class="header-container">
+        <h2>Attribute Descriptions:</h2>
+        <div id="all-attributes"></div>
     </div>
     <script src="emailContent.js"></script>
     <script src="method2_script.js"></script>

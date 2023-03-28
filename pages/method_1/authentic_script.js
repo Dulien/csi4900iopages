@@ -16,11 +16,11 @@ function nextEmail() {
     document.getElementById("result").innerHTML = "";
 
 
-    if (currentEmail == 5) {
+    if (currentEmail == 8) {
         testTimeSpent = Date.now() - testStart;
         answersCSV.push(testTimeSpent/1000);
         answersCSV.push(totalHover);
-        finalAnswerCSV.push(["Q1T","Q1H","Q2T","Q2H","Q3T","Q3H","Q4T","Q4H","Q5T","Q5H","TotalT","TotalH"]);
+        finalAnswerCSV.push(["Q1T","Q1H","Q2T","Q2H","Q3T","Q3H","Q4T","Q4H","Q5T","Q5H","Q6T","Q6H","Q7T","Q7H","Q8T","Q8H","TotalT","TotalH"]);
         finalAnswerCSV.push(answersCSV);
         const jsonString = JSON.stringify(finalAnswerCSV);
         const encodedParam = encodeURIComponent(jsonString);
@@ -75,7 +75,16 @@ document.getElementById("quiz-form").addEventListener("submit", function (event)
     } else if (currentEmail === 5) {
         isCorrect = correctAnswers5.every(answer => selectedAnswers.includes(answer));
         incorrectAnswers = correctAnswers5.filter(answer => !selectedAnswers.includes(answer));
-    }
+    } else if (currentEmail === 6) {
+        isCorrect = correctAnswers6.every(answer => selectedAnswers.includes(answer));
+        incorrectAnswers = correctAnswers6.filter(answer => !selectedAnswers.includes(answer));
+    } else if (currentEmail === 7) {
+        isCorrect = correctAnswers7.every(answer => selectedAnswers.includes(answer));
+        incorrectAnswers = correctAnswers7.filter(answer => !selectedAnswers.includes(answer));
+    } else if (currentEmail === 8) {
+        isCorrect = correctAnswers8.every(answer => selectedAnswers.includes(answer));
+        incorrectAnswers = correctAnswers8.filter(answer => !selectedAnswers.includes(answer));
+    } 
 
     for (var i = 0; i < incorrectAnswers.length; i++) {
         incorrectAnswers[i] = answersDict[incorrectAnswers[i]];
@@ -92,11 +101,14 @@ document.getElementById("quiz-form").addEventListener("submit", function (event)
 
 let answersDict = {"general-language":"General Language", "spelling-grammatical-errors":"Spelling/Grammatical Errors",
  "spoofed-email-sender":"Spoofed Email Sender", "urgent-language":"Urgent Language", "wrong-redirect":"Wrong Redirect"};
-let correctAnswers1 = ["spelling-grammatical-errors", "urgent-language", "wrong-redirect"]; // email_93
-let correctAnswers2 = ["general-language"]; // email_94
-let correctAnswers3 = ["general-language", "spoofed-email-sender"]; // email_96
-let correctAnswers4 = ["spelling-grammatical-errors", "spoofed-email-sender"]; // email_133
+let correctAnswers1 = ["urgent-language", "wrong-redirect"]; // email_93
+let correctAnswers2 = ["general-language", "spoofed-email-sender"]; // email_94
+let correctAnswers3 = ["general-language", "spelling-grammatical-errors", "wrong-redirect"]; // email_96
+let correctAnswers4 = ["spelling-grammatical-errors", "general-language", "urgent-language"]; // email_133
 let correctAnswers5 = ["spoofed-email-sender", "wrong-redirect"]; // email_137
+let correctAnswers6 = ["wrong-redirect", "urgent-language"]; // email_137
+let correctAnswers7 = ["wrong-redirect", "spoofed-email-sender"]; // email_137
+let correctAnswers8 = ["general-language", "wrong-redirect", "spoofed-email-sender"]; // email_137
 
 var answers = [];
 var answersCSV = [];
