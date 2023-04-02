@@ -59,7 +59,7 @@ h2 {
     background-color: black;
     border-radius: 10px;
     padding: 10px 15px 10px 15px;
-    bottom: 120%;
+    top: 120%; /* Change from 'bottom' to 'top' */
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -72,9 +72,10 @@ h2 {
     background-color: black;
     padding: 5px;
     z-index: 1;
-    bottom: -10px;
+    top: -10px; /* Change from 'bottom' to 'top' */
     left: calc(50% - 5px);
 }
+
 
 .all-attribute:hover .description {
     visibility: visible;
