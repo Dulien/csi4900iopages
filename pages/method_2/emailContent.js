@@ -211,7 +211,7 @@ const emailContent = [
 </html>
       `,
     attributes: [
-      { id: "general-language", text: "General Language", description: "'General Language' in phishing emails refers to vague or non-specific language used to target a broad audience, without knowing specific details about individual recipients. For example, an email that starts with 'Dear valued customer' or uses vague language like 'Your account has been compromised' may be a phishing attempt." },
+      { id: "general-language", text: "General Language", description: "'General Language' in phishing emails refers to phrasing that contains awkward sentence structures. It can also indicate language that is not specifically tailored to the recipient, but instead targets a broader audience." },
       { id: "spoofed-email-sender", text: "Spoofed Email Sender", description: "'Spoofed Email Sender' in phishing emails refers to the practice of disguising the true origin of an email by altering the sender information. Attackers can use this tactic to make an email appear as if it comes from a trusted source, such as a bank or a well-known company, in order to trick the recipient into disclosing sensitive information or clicking on a malicious link. For example, an email that appears to be from a bank but has a sender address that does not match the bank's official domain may be a phishing attempt." },
     ],
   },
@@ -296,7 +296,7 @@ const emailContent = [
           <p class="MsoNormal"><b>From:</b> Phoebe McDonald <br />
             <b>Sent:</b> Tuesday, July 16, 2019 11:51 AM<br />
             <b>To:</b> Phoebe McDonald testEmail@testServer.com<br />
-            <b>Subject:</b> [SPAM] SUMMER PART - TIME JOBS OPPORTUNITY<br />
+            <b>Subject:</b>SUMMER PART - TIME JOBS OPPORTUNITY<br />
             <b>Importance:</b> Low<o:p></o:p>
           </p>
         </div>
@@ -363,7 +363,7 @@ const emailContent = [
   </html>
       `,
     attributes: [
-      { id: "general-language", text: "General Language", description: "'General Language' in phishing emails refers to vague or non-specific language used to target a broad audience, without knowing specific details about individual recipients. For example, an email that starts with 'Dear valued customer' or uses vague language like 'Your account has been compromised' may be a phishing attempt." },
+      { id: "general-language", text: "General Language", description: "'General Language' in phishing emails refers to phrasing that contains awkward sentence structures. It can also indicate language that is not specifically tailored to the recipient, but instead targets a broader audience." },
       { id: "spelling-grammatical-error", text: "Spelling/Grammatical Error", description: "'Spelling/Grammatical Errors' in phishing emails refer to emails that contain obvious spelling, punctuation or grammatical errors. Such errors may signal that the email is a phishing attempt, as attackers may not be as concerned with proper grammar and spelling as legitimate organizations. For example, an email that says 'Your accuont has been temporarly locked' may be a phishing attempt." },
       { id: "wrong-redirect", text: "Wrong Redirect", description: "'Wrong Redirect' in phishing emails refers to the practice of redirecting the recipient to a different website than the one they were expecting to visit. This tactic is often used to redirect the recipient to a fake website that looks similar to a legitimate one, in order to trick them into providing sensitive information or downloading malware. For example, an email that contains a link to a legitimate banking website but redirects to a fake website designed to steal login credentials may be a phishing attempt." },
     ],
@@ -467,7 +467,7 @@ const emailContent = [
   </html>
       `,
     attributes: [
-      { id: "general-language", text: "General Language", description: "'General Language' in phishing emails refers to vague or non-specific language used to target a broad audience, without knowing specific details about individual recipients. For example, an email that starts with 'Dear valued customer' or uses vague language like 'Your account has been compromised' may be a phishing attempt." },
+      { id: "general-language", text: "General Language", description: "'General Language' in phishing emails refers to phrasing that contains awkward sentence structures. It can also indicate language that is not specifically tailored to the recipient, but instead targets a broader audience." },
       { id: "spelling-grammatical-error", text: "Spelling/Grammatical Error", description: "'Spelling/Grammatical Errors' in phishing emails refer to emails that contain obvious spelling, punctuation or grammatical errors. Such errors may signal that the email is a phishing attempt, as attackers may not be as concerned with proper grammar and spelling as legitimate organizations. For example, an email that says 'Your accuont has been temporarly locked' may be a phishing attempt." },
       { id: "urgent-language", text: "Urgent Language", description: "'Urgent Language' in phishing emails refers to the use of language designed to create a sense of urgency or importance in the recipient, in order to prompt them to take immediate action without thinking. This tactic is often used to pressure the recipient into clicking on a link or providing sensitive information, by making them believe that failing to act quickly will have negative consequences. For example, an email that says 'Your account will be closed if you do not update your information immediately' may be a phishing attempt." },
     ],
@@ -549,7 +549,7 @@ const emailContent = [
 			</span></p>
 		<div>
 			<div style="border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in 0in 0in">
-				<p class="MsoNormal"><b>From:</b> <span id="spoofed-email-sender-target">American Express</span> <br />
+				<p class="MsoNormal"><b>From:</b> <span id="spoofed-email-sender-target">America Express</span> <br />
 					<b>Sent:</b> Thursday, February 27, 2020 10:12 PM<br />
 					<b>To:</b>testEmail@testServer.com<br />
 					<b>Subject:</b> Important Security Message<o:p></o:p>
@@ -1531,7 +1531,7 @@ const emailContent = [
 			</span></p>
 		<div>
 			<div style="border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in 0in 0in">
-				<p class="MsoNormal"><b>From:</b> <span id="spoofed-email-sender-target">INTERAC</span> <br />
+				<p class="MsoNormal"><b>From:</b> <span id="spoofed-email-sender-target">INTERAAC</span> <br />
 					<b>Sent:</b> Saturday, February 22, 2020 7:37 AM<br />
 					<b>To:</b> asdf.uottawa.ca<br />
 					<b>Subject:</b> Expired Payment<o:p></o:p>
@@ -2063,7 +2063,7 @@ Ctrl+Click to follow link"><b><span style="color:red"><span id="wrong-redirect-t
 </html>
     `,
     attributes: [
-      { id: "general-language", text: "General Language", description: "'General Language' in phishing emails refers to vague or non-specific language used to target a broad audience, without knowing specific details about individual recipients. For example, an email that starts with 'Dear valued customer' or uses vague language like 'Your account has been compromised' may be a phishing attempt." },
+      { id: "general-language", text: "General Language", description: "'General Language' in phishing emails refers to phrasing that contains awkward sentence structures. It can also indicate language that is not specifically tailored to the recipient, but instead targets a broader audience." },
       { id: "wrong-redirect", text: "Wrong Redirect", description: "'Wrong Redirect' in phishing emails refers to the practice of redirecting the recipient to a different website than the one they were expecting to visit. This tactic is often used to redirect the recipient to a fake website that looks similar to a legitimate one, in order to trick them into providing sensitive information or downloading malware. For example, an email that contains a link to a legitimate banking website but redirects to a fake website designed to steal login credentials may be a phishing attempt." },
       { id: "spoofed-email-sender", text: "Spoofed Email Sender", description: "'Spoofed Email Sender' in phishing emails refers to the practice of disguising the true origin of an email by altering the sender information. Attackers can use this tactic to make an email appear as if it comes from a trusted source, such as a bank or a well-known company, in order to trick the recipient into disclosing sensitive information or clicking on a malicious link. For example, an email that appears to be from a bank but has a sender address that does not match the bank's official domain may be a phishing attempt." },
     ],
