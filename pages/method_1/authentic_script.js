@@ -53,47 +53,36 @@ document.getElementById("quiz-form").addEventListener("submit", function (event)
     event.preventDefault();
     let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
     let selectedAnswers  = [];
-    let incorrectAnswers = [];
 
     for (var i = 0; i < checkboxes.length; i++) {
         selectedAnswers.push(checkboxes[i].name);
     }
 
-    let isCorrect = []
+    let correctAnswers;
     if (currentEmail === 1) {
-        isCorrect = correctAnswers1.every(answer => selectedAnswers.includes(answer));
-        incorrectAnswers = correctAnswers1.filter(answer => !selectedAnswers.includes(answer));
+        correctAnswers = correctAnswers1;
     } else if (currentEmail === 2) {
-        isCorrect = correctAnswers2.every(answer => selectedAnswers.includes(answer));
-        incorrectAnswers = correctAnswers2.filter(answer => !selectedAnswers.includes(answer));
+        correctAnswers = correctAnswers2;
     } else if (currentEmail === 3) {
-        isCorrect = correctAnswers3.every(answer => selectedAnswers.includes(answer));
-        incorrectAnswers = correctAnswers3.filter(answer => !selectedAnswers.includes(answer));
+        correctAnswers = correctAnswers3;
     } else if (currentEmail === 4) {
-        isCorrect = correctAnswers4.every(answer => selectedAnswers.includes(answer));
-        incorrectAnswers = correctAnswers4.filter(answer => !selectedAnswers.includes(answer));
+        correctAnswers = correctAnswers4;
     } else if (currentEmail === 5) {
-        isCorrect = correctAnswers5.every(answer => selectedAnswers.includes(answer));
-        incorrectAnswers = correctAnswers5.filter(answer => !selectedAnswers.includes(answer));
+        correctAnswers = correctAnswers5;
     } else if (currentEmail === 6) {
-        isCorrect = correctAnswers6.every(answer => selectedAnswers.includes(answer));
-        incorrectAnswers = correctAnswers6.filter(answer => !selectedAnswers.includes(answer));
+        correctAnswers = correctAnswers6;
     } else if (currentEmail === 7) {
-        isCorrect = correctAnswers7.every(answer => selectedAnswers.includes(answer));
-        incorrectAnswers = correctAnswers7.filter(answer => !selectedAnswers.includes(answer));
+        correctAnswers = correctAnswers7;
     } else if (currentEmail === 8) {
-        isCorrect = correctAnswers8.every(answer => selectedAnswers.includes(answer));
-        incorrectAnswers = correctAnswers8.filter(answer => !selectedAnswers.includes(answer));
-    } 
-
-    for (var i = 0; i < incorrectAnswers.length; i++) {
-        incorrectAnswers[i] = answersDict[incorrectAnswers[i]];
+        correctAnswers = correctAnswers8;
     }
+
+    let correctCount = selectedAnswers.filter(answer => correctAnswers.includes(answer)).length;
+    let incorrectCount = selectedAnswers.length - correctCount;
     
-    if (!isCorrect) {
-        document.getElementById("result").innerHTML = `You got the following answers wrong: ${incorrectAnswers.join(', ')}.`;
-    } else {
-        document.getElementById("result").innerHTML ='Congratulations, you got all the answers correct!';
+    document.getElementById("result").innerHTML = `You got ${correctCount} answer(s) right and ${incorrectCount} answer(s) wrong.`;
+
+    if (correctCount === correctAnswers.length && incorrectCount === 0) {
         toggleButton();
     }
 });
