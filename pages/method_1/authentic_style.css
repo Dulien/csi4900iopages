@@ -49,7 +49,16 @@ iframe {
 
 
 
-.tooltip-text {
+.all-attribute {
+    display: inline-block;
+    position: relative;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.description {
     visibility: hidden;
     position: absolute;
     z-index: 2;
@@ -59,31 +68,24 @@ iframe {
     background-color: black;
     border-radius: 10px;
     padding: 10px 15px 10px 15px;
-    top: -8px;
-    left: 120%;
-  }
-  
-  .tooltip-text::before {
+    top: 120%; /* Change from 'bottom' to 'top' */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.description::before {
     content: "";
     position: absolute;
     transform: rotate(45deg);
     background-color: black;
     padding: 5px;
     z-index: 1;
-    top: 35%;
-    left: -2%;
-  }
-  
-  .hover-text:hover .tooltip-text {
+    top: -10px; /* Change from 'bottom' to 'top' */
+    left: calc(50% - 5px);
+}
+
+
+.all-attribute:hover .description {
     visibility: visible;
-  }
-  
-
-  
-  .hover-text {
-    position: relative;
-    display: inline-block;
-
-    font-family: Arial;
-    text-align: center;
-  }
+}

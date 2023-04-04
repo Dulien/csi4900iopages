@@ -119,16 +119,68 @@ var hoverStart = 0;
 var hoverQuestion = 0;
 var totalHover = 0;
 
-const labels = document.querySelectorAll('label');
-labels.forEach(label => {
-  label.addEventListener('mouseenter', () => {
-    hoverStart = new Date();
+const descriptions = [
+    {
+      id: 'general-language',
+      text: 'General Language',
+      description:
+        "'General Language' in phishing emails refers to phrasing that contains awkward sentence structures. It can also indicate language that is not specifically tailored to the recipient, but instead targets a broader audience."
+    },
+    {
+      id: 'spelling-grammatical-errors',
+      text: 'Spelling/Grammatical Errors',
+      description:
+        '"Spelling/Grammatical Errors" in phishing emails refer to emails that contain obvious spelling, punctuation or grammatical errors. Such errors may signal that the email is a phishing attempt, as attackers may not be as concerned with proper grammar and spelling as legitimate organizations. For example, an email that says "Your accuont has been temporarly locked" may be a phishing attempt.'
+    },
+    {
+      id: 'spoofed-email-sender',
+      text: 'Spoofed Email Sender',
+      description:
+        '"Spoofed Email Sender" in phishing emails refers to the practice of disguising the true origin of an email by altering the sender information. Attackers can use this tactic to make an email appear as if it comes from a trusted source, such as a bank or a well-known company, in order to trick the recipient into disclosing sensitive information or clicking on a malicious link. For example, an email that appears to be from a bank but has a sender address that does not match the bank\'s official domain may be a phishing attempt.'
+    },
+    {
+      id: 'urgent-language',
+      text: 'Urgent Language',
+      description:
+        '"Urgent Language" in phishing emails refers to the use of language designed to create a sense of urgency or importance in the recipient, in order to prompt them to take immediate action without thinking. This tactic is often used to pressure the recipient into clicking on a link or providing sensitive information, by making them believe that failing to act quickly will have negative consequences. For example, an email that says "Your account will be closed if you do not update your information immediately" may be a phishing attempt.'
+    },
+    {
+      id: 'wrong-redirect',
+      text: 'Wrong Redirect',
+      description:
+        '"Wrong Redirect" in phishing emails refers to the practice of redirecting the recipient to a different website than the one they were expecting to visit. This tactic is often used to redirect the recipient to a fake website that looks similar to a legitimate one, in order to trick them into providing sensitive information or downloading malware. For example, an email that contains a link to a legitimate banking website but redirects to a fake website designed to steal login credentials may be a phishing attempt.'
+    },
+  ];  
+  
+  const descriptionContainer = document.getElementById('description-container');
+  
+  descriptions.forEach(description => {
+    const allAttributeElement = document.createElement('div');
+    allAttributeElement.classList.add('all-attribute');
+    
+    const descriptionElement = document.createElement('span');
+    descriptionElement.classList.add('description');
+    descriptionElement.textContent = description.description;
+    
+    const descriptionText = document.createElement('span');
+    descriptionText.textContent = description.text;
+  
+    allAttributeElement.appendChild(descriptionText);
+    allAttributeElement.appendChild(descriptionElement);
+    descriptionContainer.appendChild(allAttributeElement);
+  
+    allAttributeElement.addEventListener('mouseenter', () => {
+      hoverStart = new Date();
+    });
+  
+    allAttributeElement.addEventListener('mouseleave', () => {
+      const hoverEnd = new Date();
+      const hoverTime = (hoverEnd - hoverStart) / 1000;
+      hoverQuestion += hoverTime;
+      console.log(hoverTime);
+    });
   });
-
-  label.addEventListener('mouseleave', () => {
-    const hoverEnd = new Date();
-    const hoverTime = (hoverEnd - hoverStart)/1000;
-    hoverQuestion += hoverTime;
-    console.log(hoverTime)
-  });
-});
+  
+  
+  
+  
