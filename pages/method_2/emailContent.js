@@ -800,9 +800,9 @@ const emailContent = [
 														<o:p></o:p>
 													</span></p>
 												<p style="margin:0in"><span
-														style='font-size:13.0pt;font-family:"Arial",sans-serif;color:#00175A;background:white'>A
-														recent charge on your card was not successful, Access to your
-														American Express account has been hold</span><span
+														style='font-size:13.0pt;font-family:"Arial",sans-serif;color:#00175A;background:white'>
+														<span id="spelling-grammatical-error-target">A recent charge on your card was not successful, Access to your
+														American Express account has been hold</span></span><span
 														style='font-size:13.0pt;font-family:"Arial",sans-serif;color:#00175A'>
 														<o:p></o:p>
 													</span></p>
@@ -810,9 +810,9 @@ const emailContent = [
 													<o:p> </o:p>
 												</p>
 												<p style="margin:0in"><span
-														style='font-size:13.0pt;font-family:"Arial",sans-serif;color:#00175A'>Due
+														style='font-size:13.0pt;font-family:"Arial",sans-serif;color:#00175A'><span id="general-language-target">Due
 														to changes in your IP address or locations through your email
-														address testEmail@testServer.com<o:p></o:p></span></p>
+														address testEmail@testServer.com</span><o:p></o:p></span></p>
 												<p style="margin:0in"><span
 														style='font-size:13.0pt;font-family:"Arial",sans-serif;color:#00175A'><br />
 														<br />
@@ -1300,6 +1300,8 @@ const emailContent = [
     attributes: [
       { id: "wrong-redirect", text: "Wrong Redirect", description: "'Wrong Redirect' in phishing emails refers to the practice of redirecting the recipient to a different website than the one they were expecting to visit. This tactic is often used to redirect the recipient to a fake website that looks similar to a legitimate one, in order to trick them into providing sensitive information or downloading malware. For example, an email that contains a link to a legitimate banking website but redirects to a fake website designed to steal login credentials may be a phishing attempt." },
       { id: "spoofed-email-sender", text: "Spoofed Email Sender", description: "'Spoofed Email Sender' in phishing emails refers to the practice of disguising the true origin of an email by altering the sender information. Attackers can use this tactic to make an email appear as if it comes from a trusted source, such as a bank or a well-known company, in order to trick the recipient into disclosing sensitive information or clicking on a malicious link. For example, an email that appears to be from a bank but has a sender address that does not match the bank's official domain may be a phishing attempt." },
+	  { id: "general-language", text: "General Language", description: "'General Language' in phishing emails refers to phrasing that contains awkward sentence structures. It can also indicate language that is not specifically tailored to the recipient, but instead targets a broader audience." },
+	  { id: "spelling-grammatical-error", text: "Spelling/Grammatical Error", description: "'Spelling/Grammatical Errors' in phishing emails refer to emails that contain obvious spelling, punctuation or grammatical errors. Such errors may signal that the email is a phishing attempt, as attackers may not be as concerned with proper grammar and spelling as legitimate organizations. For example, an email that says 'Your accuont has been temporarly locked' may be a phishing attempt." },
     ],
   },
   {
@@ -1959,7 +1961,7 @@ const emailContent = [
 				<p class="MsoNormal"><b>From:</b> <span id="spoofed-email-sender-target">Cesar Meza</span><br />
 					<b>Sent:</b> Tuesday, February 11, 2020 1:30 PM<br />
 					<b>To:</b>testEmail@testServer.com<br />
-					<b>Subject:</b> 10 of your incoming messages has been suspended now<o:p></o:p>
+					<b>Subject:</b> 10 of your incoming messages have been suspended<o:p></o:p>
 				</p>
 			</div>
 		</div>
